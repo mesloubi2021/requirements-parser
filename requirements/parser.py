@@ -24,11 +24,12 @@ def parse(reqstr):
             reqstr = reqstr.read()
 
     for line in reqstr.splitlines():
-        line = line.strip()
+        line = line = line[:-2].strip() if line.endswith('\\') else line.strip()
         if line == '':
             continue
-        elif not line or line.startswith('#'):
+        elif not line or line.startswith('#') or line.startswith('--hash'):
             # comments are lines that start with # only
+            # hashes of packages to install are provided using this:
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
             _, new_filename = line.split()
