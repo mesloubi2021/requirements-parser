@@ -48,4 +48,7 @@ def parse(reqstr):
             warnings.warn('Unused option --always-unzip. Skipping.')
             continue
         else:
-            yield Requirement.parse(line)
+            try:
+                yield Requirement.parse(line)
+            except UnicodeDecodeError:
+                continue
