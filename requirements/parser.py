@@ -25,6 +25,9 @@ def parse(reqstr):
 
     for line in reqstr.splitlines():
         line = line = line[:-2].strip() if line.endswith('\\') else line.strip()
+        index = line.find('--no-binary')
+        if index >= 0 :
+            line = line[:index]
         if line == '':
             continue
         elif not line or line.startswith('#') or line.startswith('--hash'):
