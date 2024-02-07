@@ -1,2 +1,2 @@
 -r recursive_2.txt
-Django==1.6
+Django==3.2.24
